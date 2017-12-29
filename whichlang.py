@@ -16,9 +16,9 @@ RANGE=1000
 training=bool(int(input("Training?(1/0)")))
 #load files
 #working directory needs to be the same as the txts
-with open("pl.txt") as io:
+with open("dictionaries/pl.txt") as io:
 	polish_words=io.read().split("\n")
-with open("en.txt") as io:
+with open("dictionaries/en.txt") as io:
 	english_words=io.read().split("\n")
 
 #weight initialization for ReLU
@@ -93,14 +93,14 @@ if training:
 			sess.run(train_step, feed_dict={x: data, y_correct: labels})
 			if i%(RANGE/10)==0:
 				print(int(round(i/RANGE*100)),"%")
-		save_path = saver.save(sess, "model.ckpt")
+		save_path = saver.save(sess, "trained/model.ckpt")
 		print("Model saved: %s" % save_path)
 
 
 #testing
 if not training:
 	with tf.Session() as sess:	
-		saver.restore(sess, "model.ckpt")
+		saver.restore(sess, "trained/model.ckpt")
 		print("Restored")
 		ioin=str(input())
 		while ioin!="end":
