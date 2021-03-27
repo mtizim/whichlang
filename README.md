@@ -1,2 +1,2 @@
 # whichlang
-A tf language classifier i made while also learning how to use git.
+A basic tensorflow language classifier made mostly from scratch
